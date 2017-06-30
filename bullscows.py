@@ -8,22 +8,30 @@ def passw(numDigits):
         secretNum += str(numbers[i])
     return int(secretNum)
 passw = passw(4)
-def parse(code):
-	a = code/1000
-	b = (code/100) - (a*10)
-	c = (code/10) - ((code/100)*10)
-	d = code - ((code/10)*10)
-	return a,b,c,d
+
+## parse() is a broken function as of Python3.  MUSTFIX. 
+#def parse(code):
+#	a = code/1000
+#	b = (code/100) - (a*10)
+#	c = (code/10) - ((code/100)*10)
+#	d = code - ((code/10)*10)
+#	return a,b,c,d
+
 on = 0
 while (on != 4):
 	on = 0
 	present = 0
-	guess=int(raw_input("Guess the 4-digit code:"))
-	a,b,c,d = parse(guess)
-	A,B,C,D = parse(passw)
+	guess=int(input("Guess the 4-digit code:"))
+	# inserting str here is a hacky solution; Python3 broke expected behavior of parse() function above (disabled), and list won't accept int input, so int guess and int passwd are converted to strings and then passed to list.  VERY HACKY, MUSTFIX.  
+	a,b,c,d = list(str(guess))
+	A,B,C,D = list(str(passw))
 	while a==b or b==c or c==d or a==c or a==d or b==d:
-		print "No digits can repeat!"
-		guess=int(raw_input("Guess the 4-digit code:"))
+		print(a)
+		print(b)
+		print(c)
+		print(d)
+		print("No digits can repeat!")
+		guess=int(input("Guess the 4-digit code:"))
 		a,b,c,d = parse(guess)
 	if a==A:
 		on+=1
@@ -42,9 +50,8 @@ while (on != 4):
 	if d==A or d==B or d==C:
 		present+=1
 	present = present
-	
- 	if (on==4):
-		print "You guessed correctly!"
+	if on==4:
+		print("You guessed correctly!")
 	else:
-		print "Number of digits in the right place:",on
-		print "Number of digits guessed correctly but in the wrong place:",present
+		print("Number of digits in the right place:",on)
+		print("Number of digits guessed correctly but in the wrong place:",present)
