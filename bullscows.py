@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import random
 def passw(numDigits):
     # Returns a string that is numDigits long, made up of unique random digits.
