@@ -29,7 +29,7 @@ while (on != 4):
 	while a==b or b==c or c==d or a==c or a==d or b==d:
 		print("No digits can repeat!")
 		guess=int(input("Guess the 4-digit code:"))
-		a,b,c,d = parse(guess)
+		a,b,c,d = list(str(guess))
 	if a==A:
 		on+=1
 	if b==B:
