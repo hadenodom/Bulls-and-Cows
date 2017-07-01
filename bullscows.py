@@ -27,10 +27,6 @@ while (on != 4):
 	a,b,c,d = list(str(guess))
 	A,B,C,D = list(str(passw))
 	while a==b or b==c or c==d or a==c or a==d or b==d:
-		print(a)
-		print(b)
-		print(c)
-		print(d)
 		print("No digits can repeat!")
 		guess=int(input("Guess the 4-digit code:"))
 		a,b,c,d = parse(guess)
